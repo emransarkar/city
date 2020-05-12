@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+	 <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfm8G39f641FnWy2i8W323WmPvqrTELoA&libraries=visualization">
+</script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      /* Data points defined as an array of LatLng objects */
+		var heatMapData = [
+		  {location: new google.maps.LatLng(17.3457, 78.5522), weight: 100},
+		  {location: new google.maps.LatLng(17.4169, 78.4387), weight: 120},
+		  {location: new google.maps.LatLng(17.4399, 78.4983), weight: 120}
+		];
+		var Hyderabad = new google.maps.LatLng(17.3850, 78.4867);
+
+		map = new google.maps.Map(document.getElementById('map'), {
+		  center: Hyderabad,
+		  zoom: 10,
+		  mapTypeId: 'terrain'
+		});
+		var heatmap = new google.maps.visualization.HeatmapLayer({data: heatMapData,radius: 75});
+		heatmap.setMap(map);
+    </script>
+  </body>
+</html>
